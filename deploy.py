@@ -31,16 +31,17 @@ class RepresentativeDataset:
     Modify this function to generate different sets of images for quantization
     """
     def __init__(self, cfg, limit = 1000):
-        self.kitti_reader = reader.KittiReader()
+        self.data_reader = reader.DataReader()
         self.limit = limit
         self.generator = datagen.BatchGenerator(
-            self.kitti_reader, 
+            self.data_reader, 
             batch_size=1,
             keep_aspect_ratio=cfg['keep_aspect_ratio'],
             input_size = cfg['input_size'],
-            num_bins = cfg['num_bins'],
             jitter = False,
-            mode = 'val')
+            mode = 'val', 
+            # TODO add arguments
+            )
 
     def gen(self):
         for i in range(self.limit):

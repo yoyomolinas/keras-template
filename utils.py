@@ -76,3 +76,27 @@ class DirectoryTree:
 
 	def list_files(self):
 		return os.listdir(self.path)
+   
+	def get_file_paths(self, exts = [""]):
+		res = []
+		# Add files in current directory
+		for f in os.listdir(self.path):
+			file_path = os.path.join(self.path, f)
+			if not os.path.isfile(file_path):
+				continue
+			for ext in exts:
+				size_ext = len(ext)
+				if size_ext > len(file_path):
+					continue
+				if file_path[-size_ext:] == ext:
+					res.append(file_path)
+
+		# Add files in sub directories
+		for dt in self.directories.values():
+			res.extend(dt.get_file_paths(exts = exts))
+		return res
+		
+	def get_image_file_paths(self):
+		exts = ['.JPG', '.jpg', '.png', '.PNG']
+		return self.get_file_paths(exts = exts)
+	
