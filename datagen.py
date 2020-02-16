@@ -9,7 +9,6 @@ import cv2
 from imgaug import augmenters as iaa
 import utils
 import config
-import visualization
 
 class BatchGenerator(keras.utils.Sequence):
     """
@@ -82,6 +81,7 @@ class BatchGenerator(keras.utils.Sequence):
         Preprocessing function called in __getitem__
         :return: preprocessed image
         """
+        # crop = aug_pipe.augment_image(crop)
         raise NotImplementedError()
         
 
