@@ -1,6 +1,6 @@
-# A Template For Keras Deep Learning Projects
+# A Scalable Template For Keras Deep Learning Projects
 
-This project serves as a template for deep learning projects built using Keras. 
+This project serves as a scalable template for deep learning projects built using Keras. 
 
 Deep learning projects tend to have very similar building blocks. These blocks can be reusable but have to calibrated for each and every project. 
 
@@ -122,6 +122,11 @@ The `deploy.py` script deploys trained models in various formats. These formats 
 > The **Plain Keras** model is in Hdf5 format.
 >  The **Tensorflow Lite** model is quantized.
 >   The **Edge TPU Compiled** model is for Google Coral accelerators.
+
+Use the deploy script with the following command in the console. Replace read_from with path to the folder holding model checkpoints, and save_to with the path you want to save the models. 
+```bash
+python deploy.py --read_from progress/test --save_to deploy/test
+``` 
 
 ## Contact
 Drop an email at molinas.yoel@gmail.com for questions and comments.
